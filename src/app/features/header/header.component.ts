@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  showNav: boolean = false;
+
+  handleHamClick() {
+    this.showNav = !this.showNav;
+  }
 }

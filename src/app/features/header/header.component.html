@@ -1,3 +1,26 @@
-<nav class="navbar">
-    nav
+<nav class="header shadow-md" [class.expanded]="showNav">
+    <div class="nav">
+        <div class="head">
+            <!-- brand -->
+            <div class="brand"> Logo </div>
+            <!-- hamburger -->
+            <button type="button" class="ham-button" (click)="handleHamClick()">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+        </div>
+        <!-- nav-links -->
+        <ul class="nav-list" [ngClass]="{'close': !showNav}">
+            <li><a href="#" class="active">Home</a></li>
+            <li> <a href="#">Slot</a></li>
+            <li> <a href="#">Game</a> </li>
+            <li> <a href="#">Admin</a> </li>
+            <li> <a href="#">Login</a> </li>
+            <li> <a href="#">Logout</a> </li>
+        </ul>
+    </div>
 </nav>

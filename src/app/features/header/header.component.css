@@ -1,14 +1,125 @@
-.navbar {
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 50px;
-    border-color: rgb(229 231 235 / 1);
-    background-color: rgb(249 250 251 / 1);
-    border-radius: 0.5rem;
-    padding: 5px 2px 5px 2px;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+.header {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  border-color: rgb(229 231 235 / 1);
+  background-color: rgb(249 250 251 / 1);
+  border-radius: 0;
+  padding: 0.5rem 0.2rem;
+  transition: height 200ms ease-in-out;
+  overflow: hidden;
+}
 
+.header.expanded {
+  height: 360px;
+  max-height: fit-content;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.nav > .head {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+}
+
+.nav > .head > .brand {
+  font-weight: 500;
+}
+
+.nav > .head > .ham-button {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: rgb(107 114 128 / 1);
+  border-radius: 0.5rem;
+}
+
+.nav > .head > .ham-button:hover {
+  background-color: rgb(243 244 246 / 1);
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 5px;
+  font-weight: 500;
+  margin-top: 1rem; /* 16px */
+  border-radius: 0.5rem;
+  background-color: rgb(249 250 251 / 1);
+  max-height: 100%;
+}
+
+.nav-list > li > a {
+  display: inline-flex;
+  width: 100%;
+  border-radius: 0.5rem;
+  transition: all 100ms ease-in-out;
+  padding: 5px 10px;
+}
+
+.nav-list > li > a.active {
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.765);
+}
+
+.nav-list > li > a:hover {
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.765);
+}
+
+.nav-list.close {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: row;
+  }
+
+  .header.expanded {
+    height: 80px;
+    max-height: fit-content;
+  }
+
+  .nav > .head {
+    width: auto;
+  }
+
+  .nav > .head > .ham-button {
+    display: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0;
+    border-width: 0;
+    background-color: transparent;
+    width: unset;
+  }
+
+  .nav-list.close {
+    display: flex !important;
+  }
 }
