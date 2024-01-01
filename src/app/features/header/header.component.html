@@ -16,7 +16,8 @@
         <!-- nav-links -->
         <ul class="nav-list" [ngClass]="{'close': !showNav}">
             <li *ngFor="let navLink of navLinks;">
-                <a [routerLink]='[navLink.path]' routerLinkActive="active">{{navLink.name}}</a>
+                <a [routerLink]='[navLink.path]' routerLinkActive="active"
+                    [queryParams]="navLink.params">{{navLink.name}}</a>
             </li>
         </ul>
     </div>

@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: "new-booking", component: NewbookingComponent, canActivate: [authGuard] },
   {
-    path: "dashboard",
+    path: "dashboard", canActivate: [authGuard],
     children: [
       { path: "", component: AdminDashboardComponent, pathMatch: "full" },
-      { path: "games", component: GamesComponent },
+      { path: "games/:id", component: GamesComponent },
       { path: "slots", component: SlotsComponent },
       { path: "bookings", component: BookingsComponent }
     ],
