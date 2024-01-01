@@ -6,16 +6,25 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './features/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormErrorsDirective } from './directives/form/form-errors.directive';
-import { AdminGamesComponent } from './features/admin-games/admin-games.component';
 import { HeaderComponent } from './features/header/header.component';
+import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
+import { GamesComponent } from './features/admin-dashboard/games/games.component';
+import { SlotsComponent } from './features/admin-dashboard/slots/slots.component';
+import { BookingsComponent } from './features/admin-dashboard/bookings/bookings.component';
+import { NewbookingComponent } from './features/newbooking/newbooking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     FormErrorsDirective,
-    AdminGamesComponent,
-    HeaderComponent],
+    HeaderComponent,
+    AdminDashboardComponent,
+    GamesComponent,
+    SlotsComponent,
+    BookingsComponent,
+    NewbookingComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

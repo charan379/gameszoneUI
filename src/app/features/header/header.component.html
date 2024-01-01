@@ -15,12 +15,9 @@
         </div>
         <!-- nav-links -->
         <ul class="nav-list" [ngClass]="{'close': !showNav}">
-            <li><a href="#" class="active">Home</a></li>
-            <li> <a href="#">Slot</a></li>
-            <li> <a href="#">Game</a> </li>
-            <li> <a href="#">Admin</a> </li>
-            <li> <a href="#">Login</a> </li>
-            <li> <a href="#">Logout</a> </li>
+            <li *ngFor="let navLink of navLinks;">
+                <a [routerLink]='[navLink.path]' routerLinkActive="active">{{navLink.name}}</a>
+            </li>
         </ul>
     </div>
 </nav>
