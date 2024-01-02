@@ -4,11 +4,12 @@
         <div class="card mt-4 shadow-md">
             <div class="h-2 bg-purple-400 rounded-t-md"></div>
             <!-- Login Form -->
-            <form class="px-8 py-6" [formGroup]="loginForm">
+            <form class="px-8 py-6" [formGroup]="loginForm" (submit)="login()">
                 <!-- username -->
                 <div class="form-control" [class.touched]="loginForm.controls['username'].touched">
                     <label for="username">Username</label>
-                    <input type="text" id="username" placeholder="Username" formControlName="username" autocomplete="off"/>
+                    <input type="text" id="username" placeholder="Username" formControlName="username"
+                        autocomplete="off" />
                     <p class="errors" [formErrors]="loginForm.controls['username'].errors"
                         [formErrorsMessages]="messages.username">
                     </p>
@@ -16,15 +17,16 @@
                 <!-- password -->
                 <div class="form-control" [class.touched]="loginForm.controls['password'].touched">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Password" formControlName="password" autocomplete="off" />
+                    <input type="password" id="password" placeholder="Password" formControlName="password"
+                        autocomplete="off" />
                     <p class="errors" [formErrors]="loginForm.controls['password'].errors"
                         [formErrorsMessages]="messages.password">
                     </p>
                 </div>
                 <!-- buttons -->
                 <div class="flex justify-between items-baseline">
-                    <button type="submit" disabled="loginform.invalid"
-                        [ngClass]="{'cursor-not-allowed bg-purple-300' : loginForm.invalid, 'cursor-pointer bg-purple-500 hover:bg-purple-600': loginForm.valid}"
+                    <button type="submit" [disabled]="!loginForm.valid"
+                        [ngClass]="{'cursor-not-allowed bg-purple-300' : !loginForm.valid, 'cursor-pointer bg-purple-500 hover:bg-purple-600': loginForm.valid}"
                         class="mt-4  text-white py-2 px-6 rounded-md">Login</button>
                     <a href="#" class="text-sm hover:underline">Forgot password?</a>
                 </div>

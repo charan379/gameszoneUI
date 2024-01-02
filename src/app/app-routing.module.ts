@@ -6,8 +6,8 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
 import { GamesComponent } from './features/admin-dashboard/games/games.component';
 import { SlotsComponent } from './features/admin-dashboard/slots/slots.component';
 import { BookingsComponent } from './features/admin-dashboard/bookings/bookings.component';
-import { authGuard } from './auth.guard';
 import { AppComponent } from './app.component';
+import { authGuard } from './route-guards/auth.guard';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
