@@ -1,23 +1,30 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
- private _loggedIn!: boolean;
+  private _loggedIn!: boolean;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 
 
-  public set loggedIn(v: boolean) {
+  set loggedIn(v: boolean) {
     this._loggedIn = v;
   }
 
-  public get loggedIn(): boolean {
+  get loggedIn(): boolean {
     return this._loggedIn
   }
+
+  authenticate(userName: string, password: string): Observable<any> {
+    return this.http.post(`${environment.api}/auth/generate-token`, { userName, password });
+  };
 
 
 

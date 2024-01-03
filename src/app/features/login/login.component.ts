@@ -2,15 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  
 })
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+
+  status: "loading" | "error" | "compelete" = "compelete";
+
+  error!: { errorCode: number, errorMessage: string, timestamp: string };
 
 
   messages = {
@@ -47,6 +53,24 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl(`${url.pathname}?${url.searchParams.toString()}`);
 
     }
+  }
+
+  login2(username: string, password: string) {
+    this.status = "loading";
+    this.loginService.authenticate(username, password).subscribe({
+      next: (value) => {
+        this.loginService.loggedIn = true;
+      },
+      error: (error) => {
+        this.error = error?.error;
+        this.status = 'error';
+      },
+      complete: () => {
+        setTimeout(() => {
+          this.status = "compelete"
+        }, 5000);
+      }
+    });
   }
 
 }

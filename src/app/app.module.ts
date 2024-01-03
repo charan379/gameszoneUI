@@ -12,6 +12,8 @@ import { GamesComponent } from './features/admin-dashboard/games/games.component
 import { SlotsComponent } from './features/admin-dashboard/slots/slots.component';
 import { BookingsComponent } from './features/admin-dashboard/bookings/bookings.component';
 import { NewbookingComponent } from './features/newbooking/newbooking.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { NewbookingComponent } from './features/newbooking/newbooking.component'
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    SpinnerComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
