@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   status: "loading" | "error" | "compelete" = "compelete";
 
-  error!: { errorCode: number, errorMessage: string, timestamp: string };
+  error!: { errorCode: number, errorMessage?: string, timestamp: string };
 
 
   messages = {
@@ -48,7 +48,14 @@ export class LoginComponent implements OnInit {
       },
 
       error: (error) => {
-        this.error = error?.error;
+
+        if (error?.error?.errorMessage) {
+          this.error = error?.error;
+        } else {
+          console.log(error);
+          this.error.errorMessage = "Something went wrong !"
+        }
+
         this.status = 'error';
       },
 

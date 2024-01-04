@@ -37,6 +37,7 @@ export class LoginService {
   }
 
   authenticate(userName: string, password: string): Observable<Authentication> {
+    console.log("bc ", environment.api);
     return this.http.post<Authentication>(`${environment.api}/auth/generate-token`, { userName, password });
   };
 

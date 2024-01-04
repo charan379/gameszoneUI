@@ -12,10 +12,11 @@ import { GamesComponent } from './features/admin-dashboard/games/games.component
 import { SlotsComponent } from './features/admin-dashboard/slots/slots.component';
 import { BookingsComponent } from './features/admin-dashboard/bookings/bookings.component';
 import { NewbookingComponent } from './features/newbooking/newbooking.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SortPipe } from './pipes/sort/sort.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
     HttpClientModule,
     SpinnerComponent,
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptors([authInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
