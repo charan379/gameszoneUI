@@ -4,7 +4,7 @@
         <div class="card mt-4 shadow-md">
             <div class="h-2 bg-purple-400 rounded-t-md"></div>
             <!-- Login Form -->
-            <form class="px-8 py-6" [formGroup]="loginForm" (ngSubmit)="login2(username.value, password.value)">
+            <form class="px-8 py-6" [formGroup]="loginForm" (ngSubmit)="login(username.value, password.value)">
                 <!-- username -->
                 <div class="form-control" [class.touched]="loginForm.controls['username'].touched">
                     <label for="username">Username</label>
