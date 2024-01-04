@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
-import { Params } from '@angular/router';
+import { Params, Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
     { path: "/login", name: "Login", order: 10, condition: !this.loggedIn }
   ];
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private router: Router) {
+
   }
 
 
@@ -38,11 +39,11 @@ export class HeaderComponent implements OnInit {
   }
 
   handleHamClick() {
-    console.log(this.navLinks)
     this.showNav = !this.showNav;
   }
 
   logout() {
     this.loginService.logout();
+    this.router.navigate(['/login'], { queryParams: { callback: location.href } });
   }
 }
