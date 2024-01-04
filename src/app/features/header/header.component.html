@@ -15,8 +15,8 @@
         </div>
         <!-- nav-links -->
         <ul class="nav-list" [ngClass]="{'close': !showNav}">
-            <li *ngFor="let navLink of navLinks;">
-                <a [routerLink]='[navLink.path]' routerLinkActive="active" *ngIf="navLink.condition"
+            <li *ngFor="let navLink of navLinks | sort : 'order' | filter: 'condition'">
+                <a [routerLink]='[navLink.path]' routerLinkActive="active"
                     [queryParams]="navLink.params">{{navLink.name}}</a>
             </li>
             <li *ngIf="loggedIn"><a (click)="logout()">Logout</a></li>
