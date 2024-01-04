@@ -14,8 +14,8 @@ import { BookingsComponent } from './features/admin-dashboard/bookings/bookings.
 import { NewbookingComponent } from './features/newbooking/newbooking.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { SortPipe } from './pipes/sort.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort/sort.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [
