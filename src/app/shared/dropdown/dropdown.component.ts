@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class DropdownComponent {
 
+  showContent: boolean = false;
+
+
+  toggleDropdown() {
+    this.showContent = !this.showContent;
+  }
+
 }

@@ -16,20 +16,22 @@
         <!-- nav-links -->
         <ul class="nav-list" [ngClass]="{'close': !showNav}">
             <li *ngFor="let navLink of navLinks | sort : 'order' | filter: 'condition'">
+                @if(navLink?.children){
+                <button (click)="dropdownNav.toggleDropdown()" class="nav-link">{{navLink.name}}</button>
+                <app-dropdown #dropdownNav>
+                    <ul>
+                        <li *ngFor="let childLink of navLink.children | sort : 'order' | filter: 'condition'">
+                            <a [routerLink]='[childLink.path]' routerLinkActive="active" class="nav-link"
+                                [queryParams]="childLink.params">{{childLink.name}}</a>
+                        </li>
+                    </ul>
+                </app-dropdown>
+                } @else {
                 <a [routerLink]='[navLink.path]' routerLinkActive="active" class="nav-link"
                     [queryParams]="navLink.params">{{navLink.name}}</a>
+                }
             </li>
-            <li *ngIf="loggedIn"><a (click)="logout()">Logout</a></li>
-            <li>
-                <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active"
-                    (click)="toggleDropdown()">Dropdown</a>
-                <ul *ngIf="dropdown" class="absolute">
-                    <li *ngFor="let navLink of navLinks | sort : 'order' | filter: 'condition'">
-                        <a [routerLink]='[navLink.path]' routerLinkActive="active" class="nav-link"
-                            [queryParams]="navLink.params">{{navLink.name}}</a>
-                    </li>
-                </ul>
-            </li>
+            <li *ngIf="loggedIn" class="nav-link"><a (click)="logout()">Logout</a></li>
         </ul>
     </div>
 </nav>

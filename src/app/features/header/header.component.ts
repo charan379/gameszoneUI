@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   dropdown: boolean = false;
 
-  navLinks: { path: string, name: string, order?: number, condition?: boolean, params?: Params }[] = [
+  navLinks: NavLink[] = [
     { path: "/login", name: "Login", order: 10, condition: !this.loggedIn }
   ];
 
@@ -31,12 +31,24 @@ export class HeaderComponent implements OnInit {
 
       this.navLinks = [
         { path: "/login", name: "Login", order: 10, condition: !this.loggedIn },
+        {
+          path: "/dashboard", name: "Dashboard", order: 3, condition: this.loggedIn,
+          children: [
+            { path: "/dashboard/games/34", name: "Manage Games", order: 1, condition: this.loggedIn },
+            { path: "/dashboard/slots", name: "Manage Slots", order: 3, condition: this.loggedIn },
+            { path: "/dashboard/bookings", name: "Manage Bookings", order: 2, condition: this.loggedIn }
+          ],
+        },
         { path: "/home", name: "Home", order: 10, condition: this.loggedIn },
         { path: "/new-booking", name: "New Booking", order: 2, condition: this.loggedIn },
-        { path: "/dashboard", name: "Dashboard", order: 3, condition: this.loggedIn },
-        { path: "/dashboard/games/34", name: "Manage Games", order: 4, condition: this.loggedIn },
-        { path: "/dashboard/slots", name: "Manage Slots", order: 5, condition: this.loggedIn },
-        { path: "/dashboard/bookings", name: "Manage Bookings", order: 6, condition: this.loggedIn }]
+        {
+          path: "/dashboard", name: "Dashboard", order: 3, condition: this.loggedIn,
+          children: [
+            { path: "/dashboard/games/34", name: "Manage Games", order: 1, condition: this.loggedIn },
+            { path: "/dashboard/slots", name: "Manage Slots", order: 3, condition: this.loggedIn },
+            { path: "/dashboard/bookings", name: "Manage Bookings", order: 2, condition: this.loggedIn }
+          ],
+        },]
     })
   }
 

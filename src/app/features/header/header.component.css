@@ -36,8 +36,7 @@
   width: 100%;
   padding: 1rem;
   position: fixed;
-  background-color: red;
-
+  background-color: rgb(249 250 251 / 1);
 }
 
 .nav-brand {
@@ -76,10 +75,11 @@
 
 .nav-link {
   display: inline-flex;
-  width: 100%;
+  width: 90%;
   border-radius: 0.5rem;
   transition: all 100ms ease-in-out;
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 .nav-link.active {
@@ -94,6 +94,13 @@
 
 .nav-list.close {
   display: none !important;
+}
+
+.dropdown-content {
+  width: auto;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  background-color: rgb(249 250 251 / 1);
 }
 
 @media (min-width: 768px) {
@@ -134,5 +141,13 @@
 
   .nav-list.close {
     display: flex !important;
+  }
+
+  .nav-link {
+    width: max-content;
+  }
+
+  .dropdown-content {
+    position: absolute;
   }
 }
