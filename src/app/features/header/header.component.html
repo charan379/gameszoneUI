@@ -1,8 +1,8 @@
 <nav class="header shadow-md" [class.expanded]="showNav">
     <div class="nav">
-        <div class="head">
+        <div class="nav-head">
             <!-- brand -->
-            <div class="brand"> Logo </div>
+            <div class="nav-brand"> GamesZone </div>
             <!-- hamburger -->
             <button type="button" class="ham-button" (click)="handleHamClick()">
                 <span class="sr-only">Open main menu</span>
@@ -16,10 +16,20 @@
         <!-- nav-links -->
         <ul class="nav-list" [ngClass]="{'close': !showNav}">
             <li *ngFor="let navLink of navLinks | sort : 'order' | filter: 'condition'">
-                <a [routerLink]='[navLink.path]' routerLinkActive="active"
+                <a [routerLink]='[navLink.path]' routerLinkActive="active" class="nav-link"
                     [queryParams]="navLink.params">{{navLink.name}}</a>
             </li>
             <li *ngIf="loggedIn"><a (click)="logout()">Logout</a></li>
+            <li>
+                <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active"
+                    (click)="toggleDropdown()">Dropdown</a>
+                <ul *ngIf="dropdown" class="absolute">
+                    <li *ngFor="let navLink of navLinks | sort : 'order' | filter: 'condition'">
+                        <a [routerLink]='[navLink.path]' routerLinkActive="active" class="nav-link"
+                            [queryParams]="navLink.params">{{navLink.name}}</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

@@ -6,12 +6,12 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
 import { GamesComponent } from './features/admin-dashboard/games/games.component';
 import { SlotsComponent } from './features/admin-dashboard/slots/slots.component';
 import { BookingsComponent } from './features/admin-dashboard/bookings/bookings.component';
-import { AppComponent } from './app.component';
 import { authGuard } from './route-guards/auth.guard';
+import { HomeComponent } from './features/home/home.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "home", component: AppComponent},
+  { path: "home", component: HomeComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent },
   { path: "new-booking", component: NewbookingComponent, canActivate: [authGuard] },
   {

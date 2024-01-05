@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
 
   loggedIn: boolean = false;
 
+  dropdown: boolean = false;
+
   navLinks: { path: string, name: string, order?: number, condition?: boolean, params?: Params }[] = [
     { path: "/login", name: "Login", order: 10, condition: !this.loggedIn }
   ];
@@ -45,5 +47,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.loginService.logout();
     this.router.navigate(['/login'], { queryParams: { callback: location.href } });
+  }
+
+  toggleDropdown() {
+    this.dropdown = !this.dropdown;
   }
 }

@@ -17,6 +17,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SortPipe } from './pipes/sort/sort.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { authInterceptor } from './interceptors/auth.interceptor';
+import { HomeComponent } from './features/home/home.component';
+import { DropdownComponent } from './shared/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { authInterceptor } from './interceptors/auth.interceptor';
     NewbookingComponent,
     SortPipe,
     FilterPipe,
+    HomeComponent,
+    DropdownComponent,
   ],
   imports: [
     BrowserModule,

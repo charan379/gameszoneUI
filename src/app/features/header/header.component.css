@@ -8,14 +8,13 @@
   border-color: rgb(229 231 235 / 1);
   background-color: rgb(249 250 251 / 1);
   border-radius: 0;
-  padding: 0.5rem 0.2rem;
   transition: height 200ms ease-in-out;
   overflow: hidden;
 }
 
 .header.expanded {
-  height: 360px;
-  max-height: fit-content;
+  height: 80%;
+  overflow-y: scroll;
 }
 
 .nav {
@@ -24,28 +23,32 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem;
 }
 
-.nav > .head {
+.nav-head {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
+  height: 80px;
   width: 100%;
+  padding: 1rem;
+  position: fixed;
+  background-color: red;
+
 }
 
-.nav > .head > .brand {
+.nav-brand {
   font-weight: 500;
 }
 
-.nav > .head > .ham-button {
+.ham-button {
   display: inline-flex;
   align-items: center;
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.25rem; /* 20px */
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   padding: 0.5rem;
   width: 2.5rem;
   height: 2.5rem;
@@ -53,7 +56,7 @@
   border-radius: 0.5rem;
 }
 
-.nav > .head > .ham-button:hover {
+.ham-button:hover {
   background-color: rgb(243 244 246 / 1);
 }
 
@@ -64,13 +67,14 @@
   width: 100%;
   gap: 5px;
   font-weight: 500;
-  margin-top: 1rem; /* 16px */
+  margin-top: 2rem;
   border-radius: 0.5rem;
   background-color: rgb(249 250 251 / 1);
   max-height: 100%;
+  margin: 90px 20px 50px 20px;
 }
 
-.nav-list > li > a {
+.nav-link {
   display: inline-flex;
   width: 100%;
   border-radius: 0.5rem;
@@ -78,12 +82,12 @@
   padding: 5px 10px;
 }
 
-.nav-list > li > a.active {
+.nav-link.active {
   color: aliceblue;
   background-color: rgba(0, 0, 0, 0.765);
 }
 
-.nav-list > li > a:hover {
+.nav-link:hover {
   color: aliceblue;
   background-color: rgba(0, 0, 0, 0.765);
 }
@@ -97,26 +101,35 @@
     flex-direction: row;
   }
 
-  .header.expanded {
-    height: 80px;
-    max-height: fit-content;
+  .header {
+    overflow: visible;
   }
 
-  .nav > .head {
+  .header.expanded {
+    height: 80px;
+    overflow-y: visible;
+  }
+
+  .nav-head {
+    padding: 0 1rem 0 1rem;
+    position: relative;
     width: auto;
   }
 
-  .nav > .head > .ham-button {
+  .ham-button {
     display: none;
   }
 
   .nav-list {
     flex-direction: row;
     align-items: center;
+    height: 80px;
     margin-top: 0;
     border-width: 0;
     background-color: transparent;
     width: unset;
+    margin: 0px;
+    padding: 0px 1.5rem 0px 0px;
   }
 
   .nav-list.close {
